@@ -1,0 +1,250 @@
+{
+  "title": "Approximation Register(SAR) conversion method",
+  "outline": [
+    {
+      "level": "H3",
+      "text": "temperature sensor.",
+      "page": 1
+    },
+    {
+      "level": "H3",
+      "text": "Analog voltage and Digital value of the ADC are related as follows:",
+      "page": 2
+    },
+    {
+      "level": "H3",
+      "text": "REFP",
+      "page": 2
+    },
+    {
+      "level": "H3",
+      "text": "V s the Input analog voltage V",
+      "page": 2
+    },
+    {
+      "level": "H3",
+      "text": "REFP Is the Reference voltage of ADC N is the number of bits",
+      "page": 2
+    },
+    {
+      "level": "H3",
+      "text": "(V REFP / 2 ) is Resolution; It is a constant for given value of N and V REFP",
+      "page": 2
+    },
+    {
+      "level": "H3",
+      "text": "Digital output is directly proportional to Analog input voltage",
+      "page": 2
+    },
+    {
+      "level": "H3",
+      "text": "For 3.3 V, N=12, Resolution is 0.805 mV. i.e 0.805 mV change at the input creates ±1 change at the digital output.",
+      "page": 2
+    },
+    {
+      "level": "H3",
+      "text": "When analog voltage is 0 mV output decimal value is 0 When analog voltage is 0.805 mV output decimal value is 1",
+      "page": 2
+    },
+    {
+      "level": "H3",
+      "text": "When analog voltage is (0.805x2 =1.6) mV output decimal value is 2 When analog voltage is (0.805x3 =2.4) mV output decimal value is 3",
+      "page": 2
+    },
+    {
+      "level": "H3",
+      "text": "When analog voltage is (0.805x4095 = 3.3-0.805) mV output decimal value is 4095",
+      "page": 2
+    },
+    {
+      "level": "H3",
+      "text": "ADCR – A/D Control Register",
+      "page": 8
+    },
+    {
+      "level": "H3",
+      "text": "AD0.0 –P0.23 FN 01 AD0.1-P0.24 FN 01",
+      "page": 8
+    },
+    {
+      "level": "H3",
+      "text": "AD0.2-P0.25 FN 01 AD0.3-P0.26 FN 01",
+      "page": 8
+    },
+    {
+      "level": "H3",
+      "text": "AD0.4-P0.30 FN 03 AD0.5-P0.31 FN 03",
+      "page": 8
+    },
+    {
+      "level": "H3",
+      "text": "AD0.6-P0.3 FN 02 AD0.7-P0.2 FN 02",
+      "page": 8
+    },
+    {
+      "level": "H3",
+      "text": "ADCR – A/D Control Register",
+      "page": 9
+    },
+    {
+      "level": "H3",
+      "text": "A/D Global Data Register (ADGDR) :",
+      "page": 10
+    },
+    {
+      "level": "H3",
+      "text": "The A/D Data Registers hold the result of the last conversion for each A/D channel, when an A/D conversion is complete. They also include the flags that indicate when a conversion has been completed and when a",
+      "page": 11
+    },
+    {
+      "level": "H3",
+      "text": "conversion overrun has occurred.",
+      "page": 11
+    },
+    {
+      "level": "H3",
+      "text": "A/D Interrupt Enable register (ADINTEN) : This register allows control over which A/D channels generate an interrupt when a conversion is complete.",
+      "page": 12
+    },
+    {
+      "level": "H3",
+      "text": "A/D Status register (ADSTAT) :",
+      "page": 13
+    },
+    {
+      "level": "H3",
+      "text": "The A/D Status register allows checking the status of all A/D channels simultaneously. The DONE and OVERRUN flags appearing in the ADDRn register for each A/D channel are mirrored in ADSTAT. The",
+      "page": 13
+    },
+    {
+      "level": "H3",
+      "text": "interrupt flag (the logical OR of all DONE flags) is also found in ADSTAT.",
+      "page": 13
+    },
+    {
+      "level": "H3",
+      "text": "ADC software mode for 2-channel concurrent conversion",
+      "page": 15
+    },
+    {
+      "level": "H3",
+      "text": "Input Analog voltage and display its digital equivalent on LCD",
+      "page": 16
+    },
+    {
+      "level": "H3",
+      "text": "ANALOG INPUT 1.1V ADC OUTPUT 555",
+      "page": 16
+    },
+    {
+      "level": "H3",
+      "text": "TO AD0.5",
+      "page": 16
+    },
+    {
+      "level": "H3",
+      "text": "Table(IVT) • If the peripheral device is enabled to generate",
+      "page": 20
+    },
+    {
+      "level": "H3",
+      "text": "Interrupt when some event",
+      "page": 20
+    },
+    {
+      "level": "H3",
+      "text": "Type 0 Vector Type 1 Vector",
+      "page": 20
+    },
+    {
+      "level": "H3",
+      "text": "Type 2 Vector",
+      "page": 20
+    },
+    {
+      "level": "H3",
+      "text": "Type N Vector",
+      "page": 20
+    },
+    {
+      "level": "H3",
+      "text": "Base addr",
+      "page": 20
+    },
+    {
+      "level": "H3",
+      "text": "Base addr+4",
+      "page": 20
+    },
+    {
+      "level": "H3",
+      "text": "Base addr+8",
+      "page": 20
+    },
+    {
+      "level": "H3",
+      "text": "Base addr+4*N",
+      "page": 20
+    },
+    {
+      "level": "H3",
+      "text": "When Interrupt occurs, NVIC loads vector to PC and executes the ISR",
+      "page": 20
+    },
+    {
+      "level": "H3",
+      "text": "to provide the service to peripheral",
+      "page": 20
+    },
+    {
+      "level": "H3",
+      "text": "Save the return address, Get the Interrupt Vector from IVT and load that address to PC. Upon completion of ISR execution resumes the calling",
+      "page": 21
+    },
+    {
+      "level": "H3",
+      "text": "occurs) • When the event occurs the corresponding bit is set automatically in the IR",
+      "page": 22
+    },
+    {
+      "level": "H3",
+      "text": "register. This indicates the NVIC about the event • If the NVIC is enabled to service the Timer Interrupt, it executes the",
+      "page": 22
+    },
+    {
+      "level": "H3",
+      "text": "corresponding ISR and gives the desired service to the Timer. • In the ISR, clear the corresponding bit, by writing back 1.",
+      "page": 22
+    },
+    {
+      "level": "H1",
+      "text": "Timer/Counter Interrupt Programming",
+      "page": 23
+    },
+    {
+      "level": "H3",
+      "text": "Timer/Counter Interrupt Programming",
+      "page": 24
+    },
+    {
+      "level": "H1",
+      "text": "Timer/Counter Interrupt Programming",
+      "page": 25
+    },
+    {
+      "level": "H1",
+      "text": "Timer/Counter Interrupt Programming",
+      "page": 26
+    },
+    {
+      "level": "H1",
+      "text": "Timer/Counter Interrupt Programming",
+      "page": 27
+    },
+    {
+      "level": "H1",
+      "text": "Timer/Counter Interrupt Programming",
+      "page": 28
+    }
+  ]
+}
